@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-// import Form from 'react-bootstrap/Form';
+import Header from './header';
+import Form from 'react-bootstrap/Form';
+
 
 
 
@@ -9,7 +11,8 @@ export class App extends Component {
     super(props);
     this.state = {
       data: '',
-      seach: ''
+      seach: '',
+      show: false,
     };
   }
 
@@ -20,7 +23,8 @@ export class App extends Component {
     const request = await axios.get(url);
 
     this.setState({
-      data: request.data[0]
+      data: request.data[0],
+      show: true
 
     })
 
@@ -31,26 +35,53 @@ export class App extends Component {
     this.setState({ seach: event.target.value });
   }
 
-  render() {
+
+  resultShow = () => {
+
     return (
 
-      <div style={{ margin: '2rem 5rem', color: '#3f3697' }}>
-        <h1>City Explorer</h1>
-        <br />
-        <form onSubmit={this.getLocation} >
-          <input onChange={this.updateSearch} type="text" size="lg" placeholder='city name ...' />
+      this.state.show ?
+        <>
+          <p>
+            Wellcom to {this.state.data.display_name}
+          </p>
           <br />
+          <p>
+            Location :  {this.state.data.display_name}  is located at ( {this.state.data.lat} ) by ( {this.state.data.lon} )
+          </p>
           <br />
-          <input type="submit" size="lg" value='Get City' className="btn btn-danger" style={{ width: '10rem' }} />
-        </form>
-        <br />
-        <p>
-          {this.state.data.display_name}
-        </p>
-        <br />
-      </div>
+          <img src={`https://maps.locationiq.com/v3/staticmap?key=pk.d36871f015649f915282f374cff76628&q&center=${this.state.data.lat},${this.state.data.lon}&zoom=10`} alt='' />
+        </>
+        : ''
+
     )
+
+
   }
+
+
+  render() {
+    return (
+      <>
+        <Header />
+        <div style={{ margin: '2rem 25%', color: '#3f3697' }}>
+
+          <br />
+          <Form onSubmit={this.getLocation} >
+            <Form.Group>
+              <Form.Control onChange={this.updateSearch} type="text" size="lg" placeholder='city name ...' style={{ width: '20rem', height: '3rem' }} />
+              <br />
+              <br />
+              <input type="submit" size="lg" value='Get City' className="btn btn-danger" style={{ width: '10rem', height: '3rem' }} />
+            </Form.Group>
+          </Form >
+          <br />
+          {this.resultShow()}
+        </div>
+      </>)
+  }
+
 }
 
 export default App;
+

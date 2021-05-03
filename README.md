@@ -1,3 +1,31 @@
+# Project Name
+
+**Author**: Abeer AlRafati
+**Version**: 1.0.0 
+
+## Overview
+this app will allow you to extract the zip code of any city you print in the form and also will show a map spot to this city.  
+## Getting Started
+you only need to open the link deployed of the website and enter location yoy want to show the results.
+
+## Architecture
+this app build by reactjs with axios and bootstrap libraries using locationiq API.
+
+## Change Log
+
+2-5-2021 6:30pm -app now has succesfully added cities locasion.  
+3-5-2021 6:54am - app now has successfly added the maps of the locations.  
+3-5-2021 8:23 - app now show the information and map only after submit.  
+
+
+## Credit and Collaborations
+
+resources used:
+
+[link to LocationIQ!](https://locationiq.com/)
+[link to Axios!](https://www.npmjs.com/package/axios)
+[link to Bootstrap!](https://react-bootstrap.github.io/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
