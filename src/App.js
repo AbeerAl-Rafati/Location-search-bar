@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import Header from './header';
+import Footer from './footer';
 import Form from 'react-bootstrap/Form';
-
+import Image from 'react-bootstrap/Image'
 
 
 
@@ -11,14 +12,14 @@ export class App extends Component {
     super(props);
     this.state = {
       data: '',
-      seach: '',
+      search: '',
       show: false,
     };
   }
 
   getLocation = async (event) => {
     event.preventDefault();
-    const url = `https://us1.locationiq.com/v1/search.php?key=pk.082dcc9f8fc663748f0ed6c6ddb332a1&q=${this.state.seach}&format=json`;
+    const url = `https://us1.locationiq.com/v1/search.php?key=pk.082dcc9f8fc663748f0ed6c6ddb332a1&q=${this.state.search}&format=json`;
 
     const request = await axios.get(url);
 
@@ -31,8 +32,11 @@ export class App extends Component {
   };
 
 
+
+
   updateSearch = (event) => {
-    this.setState({ seach: event.target.value });
+
+    this.setState({ search: event.target.value })
   }
 
 
@@ -50,7 +54,7 @@ export class App extends Component {
             Location :  {this.state.data.display_name}  is located at ( {this.state.data.lat} ) by ( {this.state.data.lon} )
           </p>
           <br />
-          <img src={`https://maps.locationiq.com/v3/staticmap?key=pk.d36871f015649f915282f374cff76628&q&center=${this.state.data.lat},${this.state.data.lon}&zoom=10`} alt='' />
+          <Image src={`https://maps.locationiq.com/v3/staticmap?key=pk.d36871f015649f915282f374cff76628&q&center=${this.state.data.lat},${this.state.data.lon}&zoom=10`} alt='' fluid />
         </>
         : ''
 
@@ -78,6 +82,7 @@ export class App extends Component {
           <br />
           {this.resultShow()}
         </div>
+        <Footer />
       </>)
   }
 
