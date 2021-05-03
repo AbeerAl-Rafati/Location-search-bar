@@ -27,16 +27,47 @@ resources used:
 [link to Bootstrap!](https://react-bootstrap.github.io/)
 
 
+## Time Estimates  
 
-Name of feature: ________________________________
+Name of feature: add location
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: ##
 
-Start time: _____
+Start time: 2-5-2021 3:30pm
 
-Finish time: _____
+Finish time: 2-5-2021 5:30pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: not that much, it's only passing values but for first time mmm i spent time following with the lucture
+--------------------------
+Name of feature: add maps
+
+Estimate of time needed to complete: ##
+
+Start time: 3-5-2021 5:10am
+
+Finish time: 3-5-2021 5:50am
+
+Actual time needed to complete:   mmm i spent time following with the lucture
+------------------------
+Name of feature: delete defult result
+
+Estimate of time needed to complete: ##
+
+Start time: 3-5-2021 7:00 am
+
+Finish time: 3-5-2021 8:20 am
+
+Actual time needed to complete:  i struggle with the function , how to call it , i should add parnthesis not only add it between curly bractes
+---------------------------
+Name of feature: error msg
+Estimate of time needed to complete: ##
+
+Start time: 3-5-2021 8:30 am
+
+Finish time: didn't finish yet
+
+Actual time needed to complete:  
+
 
 # Getting Started with Create React App
 
