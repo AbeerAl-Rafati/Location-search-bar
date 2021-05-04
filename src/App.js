@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import Header from './header';
 import Footer from './footer';
+// import Error from './error';
+// import Map from './map';
+
 import Form from 'react-bootstrap/Form';
 import Image from 'react-bootstrap/Image'
 
@@ -14,20 +17,44 @@ export class App extends Component {
       data: '',
       search: '',
       show: false,
+      error: false,
+      // weather: ''
     };
   }
 
   getLocation = async (event) => {
-    event.preventDefault();
-    const url = `https://us1.locationiq.com/v1/search.php?key=pk.082dcc9f8fc663748f0ed6c6ddb332a1&q=${this.state.search}&format=json`;
+    try {
+      event.preventDefault();
+      const url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATOIN_IQ_KEY}&q=${this.state.search}&format=json`;
 
-    const request = await axios.get(url);
+      const request = await axios.get(url);
 
-    this.setState({
-      data: request.data[0],
-      show: true
+      // const myApi = await axios.get(`${process.env.REACT_APP_CLIENT}/weather`);
+      // console.log(myApi.data);
 
-    })
+
+      this.setState({
+        data: request.data[0],
+        show: true,
+
+
+
+      })
+
+      // this.setState({
+
+      //   weather: myApi.data[0]
+
+      // })
+
+    }
+    catch (error) {
+      this.setState({
+        show: false,
+        error: true,
+      });
+      alert('ERROR !! Add an acceptable value !!')
+    }
 
   };
 
@@ -54,7 +81,13 @@ export class App extends Component {
             Location :  {this.state.data.display_name}  is located at ( {this.state.data.lat} ) by ( {this.state.data.lon} )
           </p>
           <br />
+          {/* <Map
+            data={this.state.data[0]}
+          /> */}
+
           <Image src={`https://maps.locationiq.com/v3/staticmap?key=pk.d36871f015649f915282f374cff76628&q&center=${this.state.data.lat},${this.state.data.lon}&zoom=10`} alt='' fluid />
+          <br />
+          {/* <p>The weather in the city : {this.state.weather.data}</p> */}
         </>
         : ''
 
@@ -80,7 +113,8 @@ export class App extends Component {
             </Form.Group>
           </Form >
           <br />
-          {this.resultShow()}
+          <div>{this.resultShow()}</div>
+
         </div>
         <Footer />
       </>)
