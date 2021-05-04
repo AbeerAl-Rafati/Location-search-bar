@@ -11,12 +11,6 @@ you only need to open the link deployed of the website and enter location yoy wa
 ## Architecture
 this app build by reactjs with axios and bootstrap libraries using locationiq API.
 
-## Change Log
-
-2-5-2021 6:30pm -app now has succesfully added cities locasion.  
-3-5-2021 6:54am - app now has successfly added the maps of the locations.  
-3-5-2021 8:23 - app now show the information and map only after submit.  
-
 
 ## Credit and Collaborations
 
@@ -25,6 +19,8 @@ resources used:
 [link to LocationIQ!](https://locationiq.com/)
 [link to Axios!](https://www.npmjs.com/package/axios)
 [link to Bootstrap!](https://react-bootstrap.github.io/)
+
+
 
 
 ## Time Estimates  
@@ -37,7 +33,8 @@ Start time: 2-5-2021 3:30pm
 
 Finish time: 2-5-2021 5:30pm
 
-Actual time needed to complete: not that much, it's only passing values but for first time mmm i spent time following with the lucture
+Actual time needed to complete: not that much, it's only passing values but for first time mmm i spent time following with the lucture  
+
 --------------------------
 Name of feature: add maps
 
@@ -47,7 +44,8 @@ Start time: 3-5-2021 5:10am
 
 Finish time: 3-5-2021 5:50am
 
-Actual time needed to complete:   mmm i spent time following with the lucture
+Actual time needed to complete:   mmm i spent time following with the lucture  
+
 ------------------------
 Name of feature: delete defult result
 
@@ -57,16 +55,37 @@ Start time: 3-5-2021 7:00 am
 
 Finish time: 3-5-2021 8:20 am
 
-Actual time needed to complete:  i struggle with the function , how to call it , i should add parnthesis not only add it between curly bractes
+Actual time needed to complete:  i struggle with the function , how to call it , i should add parnthesis not only add it between curly bractes  
+
 ---------------------------
 Name of feature: error msg
 Estimate of time needed to complete: ##
 
-Start time: 3-5-2021 8:30 am
+Start time: 4-5-2021 7:30 am
 
-Finish time: didn't finish yet
+Finish time: 4-5-2021 8:20 am
 
-Actual time needed to complete:  
+Actual time needed to complete: mmm i think that is fair  
+
+----------------------------
+Name of feature: create a server
+Estimate of time needed to complete: ##
+
+Start time: 3-5-2021 3:30 am
+
+Finish time: 3-5-2021 4:20 am
+
+Actual time needed to complete: i think this time is engouht  
+
+----------------------------
+Name of feature: send the data from the server to the frontend App
+Estimate of time needed to complete: ##
+
+Start time: 4-5-2021 9:30 pm
+
+Finish time: 4-5-2021 10:30 pm
+
+Actual time needed to complete: i think this time is engouht  
 
 
 # Getting Started with Create React App

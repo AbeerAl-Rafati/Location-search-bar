@@ -3,10 +3,10 @@ import axios from 'axios';
 import Header from './header';
 import Footer from './footer';
 // import Error from './error';
-// import Map from './map';
-
-import Form from 'react-bootstrap/Form';
-import Image from 'react-bootstrap/Image'
+import Map from './map';
+import FormA from './Form';
+import Info from './Info';
+import WeatherA from './WeatherA';
 
 
 
@@ -18,7 +18,8 @@ export class App extends Component {
       search: '',
       show: false,
       error: false,
-      // weather: ''
+      weatherData: ''
+      // err: ''
     };
   }
 
@@ -29,23 +30,19 @@ export class App extends Component {
 
       const request = await axios.get(url);
 
-      // const myApi = await axios.get(`${process.env.REACT_APP_CLIENT}/weather`);
-      // console.log(myApi.data);
+      const weather = await axios.get(`${process.env.REACT_APP_CLIENT}/weather`);
+      console.log(weather.data);
 
+
+      // const error = await axios.get(`${process.env.REACT_APP_CLIENT}/error`);
 
       this.setState({
         data: request.data[0],
+        weatherData: weather.data,
         show: true,
 
 
-
       })
-
-      // this.setState({
-
-      //   weather: myApi.data[0]
-
-      // })
 
     }
     catch (error) {
@@ -53,7 +50,8 @@ export class App extends Component {
         show: false,
         error: true,
       });
-      alert('ERROR !! Add an acceptable value !!')
+      // alert('ERROR !! Add an acceptable value !!')
+      // <Error err={} />
     }
 
   };
@@ -71,25 +69,31 @@ export class App extends Component {
 
     return (
 
-      this.state.show ?
-        <>
-          <p>
-            Wellcom to {this.state.data.display_name}
-          </p>
-          <br />
-          <p>
-            Location :  {this.state.data.display_name}  is located at ( {this.state.data.lat} ) by ( {this.state.data.lon} )
-          </p>
-          <br />
-          {/* <Map
-            data={this.state.data[0]}
-          /> */}
+      this.state.show &&
+      <div className="row">
+        <div className="col-xs-6">
+          <Info
+            name={this.state.data.display_name}
+            lat={this.state.data.lat}
+            lon={this.state.data.lon}
+          />
 
-          <Image src={`https://maps.locationiq.com/v3/staticmap?key=pk.d36871f015649f915282f374cff76628&q&center=${this.state.data.lat},${this.state.data.lon}&zoom=10`} alt='' fluid />
           <br />
-          {/* <p>The weather in the city : {this.state.weather.data}</p> */}
-        </>
-        : ''
+
+          <Map
+            lat={this.state.data.lat}
+            lon={this.state.data.lon}
+          />
+        </div>
+
+
+        <div className="col-xs-6">
+          <WeatherA allInfo={this.state.weatherData} />
+        </div>
+
+
+      </div>
+
 
     )
 
@@ -103,16 +107,14 @@ export class App extends Component {
         <Header />
         <div style={{ margin: '2rem 25%', color: '#3f3697' }}>
 
+
+          <FormA
+            location={this.getLocation}
+            update={this.updateSearch}
+          />
+
           <br />
-          <Form onSubmit={this.getLocation} >
-            <Form.Group>
-              <Form.Control onChange={this.updateSearch} type="text" size="lg" placeholder='city name ...' style={{ width: '20rem', height: '3rem' }} />
-              <br />
-              <br />
-              <input type="submit" size="lg" value='Get City' className="btn btn-danger" style={{ width: '10rem', height: '3rem' }} />
-            </Form.Group>
-          </Form >
-          <br />
+
           <div>{this.resultShow()}</div>
 
         </div>
