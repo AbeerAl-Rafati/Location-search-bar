@@ -5,7 +5,7 @@ export class Map extends Component {
   render() {
     return (
       <div>
-        <Image src={`https://maps.locationiq.com/v3/staticmap?key=pk.d36871f015649f915282f374cff76628&q&center=${this.props.data.lat},${this.props.data.lot}&zoom=10`} alt='' fluid />
+        <Image src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATOIN_IQ_KEY}&q&center=${this.props.lat},${this.props.lon}&zoom=10`} alt='' fluid />
       </div>
     )
   }
