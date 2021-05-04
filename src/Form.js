@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 
 
@@ -15,7 +15,7 @@ export class FormA extends Component {
         </Form.Group>
       </Form >
 
-    )
+    );
   }
 }
 

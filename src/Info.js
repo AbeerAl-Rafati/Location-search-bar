@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export class Info extends Component {
   render() {
@@ -7,12 +7,13 @@ export class Info extends Component {
         <p>
           Wellcom to {this.props.name}
         </p>
+
         <br />
         <p>
           Location :  {this.props.display_name}  is located at ( {this.props.lat} ) by ( {this.props.lon} )
-          </p>
+        </p>
       </div>
-    )
+    );
   }
 }
 
