@@ -4,7 +4,9 @@ class Error extends React.Component {
   render() {
     return (
       <>
-        <p>"error": "Unable to geocode"</p>
+        <h1>
+          ERROR
+        </h1>
         <br />
         <p>Add a correct city name</p>
       </>
