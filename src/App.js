@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './header';
 import Footer from './footer';
@@ -42,7 +42,7 @@ export class App extends Component {
         show: true,
 
 
-      })
+      });
 
     }
     catch (error) {
@@ -61,7 +61,7 @@ export class App extends Component {
 
   updateSearch = (event) => {
 
-    this.setState({ search: event.target.value })
+    this.setState({ search: event.target.value });
   }
 
 
@@ -95,7 +95,7 @@ export class App extends Component {
       </div>
 
 
-    )
+    );
 
 
   }
@@ -119,7 +119,7 @@ export class App extends Component {
 
         </div>
         <Footer />
-      </>)
+      </>);
   }
 
 }

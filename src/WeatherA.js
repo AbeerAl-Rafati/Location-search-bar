@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export class WeatherA extends Component {
   render() {
@@ -12,13 +12,13 @@ export class WeatherA extends Component {
             <p>========================</p>
 
           </div>
-        )
+        );
 
 
       })
 
-    )
+    );
   }
 }
 
-export default WeatherA
+export default WeatherA;
