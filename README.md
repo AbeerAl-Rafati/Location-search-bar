@@ -11,6 +11,7 @@ you only need to open the link deployed of the website and enter location yoy wa
 ## Architecture
 this app build by reactjs with axios and bootstrap libraries using locationiq API.
 
+![pic](screenshot.jpeg)
 
 ## Credit and Collaborations
 
