@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './header';
 import Footer from './footer';
-// import Error from './error';
+import Error from './error';
 import Map from './map';
 import FormA from './Form';
 import Info from './Info';
@@ -51,7 +51,7 @@ export class App extends Component {
         error: true,
       });
       // alert('ERROR !! Add an acceptable value !!')
-      // <Error err={} />
+      <Error />
     }
 
   };
@@ -68,33 +68,34 @@ export class App extends Component {
   resultShow = () => {
 
     return (
-
+      <>
+        this.state.error && <Error />
       this.state.show &&
-      <div className="row">
-        <div className="col-xs-6">
-          <Info
-            name={this.state.data.display_name}
-            lat={this.state.data.lat}
-            lon={this.state.data.lon}
-          />
+        <div className="row">
+          <div className="col-xs-6">
+            <Info
+              name={this.state.data.display_name}
+              lat={this.state.data.lat}
+              lon={this.state.data.lon}
+            />
 
-          <br />
+            <br />
 
-          <Map
-            lat={this.state.data.lat}
-            lon={this.state.data.lon}
-          />
+            <Map
+              lat={this.state.data.lat}
+              lon={this.state.data.lon}
+            />
+          </div>
+
+
+          <div className="col-xs-6">
+            <WeatherA allInfo={this.state.weatherData} />
+          </div>
+
+
         </div>
 
-
-        <div className="col-xs-6">
-          <WeatherA allInfo={this.state.weatherData} />
-        </div>
-
-
-      </div>
-
-
+      </>
     );
 
 
