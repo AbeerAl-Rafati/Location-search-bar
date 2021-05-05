@@ -18,7 +18,7 @@ export class App extends Component {
       search: '',
       show: false,
       error: false,
-      weatherData: ''
+      weatherData: '',
       // err: ''
     };
   }
@@ -30,16 +30,10 @@ export class App extends Component {
 
       const request = await axios.get(url);
 
-      const weather = await axios.get(`${process.env.REACT_APP_CLIENT}/weather`);
-      console.log(weather.data);
-
-
-      // const error = await axios.get(`${process.env.REACT_APP_CLIENT}/error`);
+      // const error = await axios.get(`${process.env.REACT_APP_SERVER}/error`);
 
       this.setState({
         data: request.data[0],
-        weatherData: weather.data,
-        show: true,
 
 
       });
@@ -51,12 +45,21 @@ export class App extends Component {
         error: true,
       });
       // alert('ERROR !! Add an acceptable value !!')
-      <Error />
+      // <Error />
     }
-
+    this.getWheather();
   };
 
+  getWheather = async () => {
+    const weatherReq = await axios.get(`${process.env.REACT_APP_SERVER}/weather?lat=${this.state.data.lat}&lon=${this.state.data.lon}`);
+    console.log(weatherReq.data);
 
+    this.setState({
+      weatherData: weatherReq.data,
+      show: true,
+    });
+
+  }
 
 
   updateSearch = (event) => {
@@ -70,6 +73,7 @@ export class App extends Component {
     return (
       <>
         this.state.error && <Error />
+
       this.state.show &&
         <div className="row">
           <div className="col-xs-6">
@@ -89,7 +93,7 @@ export class App extends Component {
 
 
           <div className="col-xs-6">
-            <WeatherA allInfo={this.state.weatherData} />
+            <WeatherA weatherInfo={this.state.weatherData} />
           </div>
 
 
