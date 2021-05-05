@@ -50,8 +50,13 @@ export class App extends Component {
     this.getWheather();
   };
 
+  // const expressWeatherUrl = `${process.env.REACT_APP_SERVER}/weather?lat=${this.state.data.lat}&lon=${this.state.data.lon}`;
+  // const expressReq = await axios.get(expressWeatherUrl);
+
+
   getWheather = async () => {
-    const weatherReq = await axios.get(`${process.env.REACT_APP_SERVER}/weather?lat=${this.state.data.lat}&lon=${this.state.data.lon}`);
+    const weatherUrl = `${process.env.REACT_APP_SERVER}/weather?lat=${this.state.data.lat}&lon=${this.state.data.lon}`;
+    const weatherReq = await axios.get(weatherUrl);
     console.log(weatherReq.data);
 
     this.setState({
