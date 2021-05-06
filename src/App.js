@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './header';
 import Footer from './footer';
-// import Error from './error';
+import Error from './error';
 import Map from './map';
 import FormA from './Form';
 import Info from './Info';
@@ -18,7 +18,7 @@ export class App extends Component {
       search: '',
       show: false,
       error: false,
-      weatherData: '',
+      weatherData: [],
       // err: ''
     };
   }
@@ -26,11 +26,11 @@ export class App extends Component {
   getLocation = async (event) => {
     try {
       event.preventDefault();
-      // const url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATOIN_IQ_KEY}&q=${this.state.search}&format=json`;
+      const url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATOIN_IQ_KEY}&q=${this.state.search}&format=json`;
 
-      const infoUrl = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATOIN_IQ_KEY}&q=${this.state.search}&format=json`;
 
-      const request = await axios.get(infoUrl);
+
+      const request = await axios.get(url);
 
       // const error = await axios.get(`${process.env.REACT_APP_SERVER}/error`);
 
@@ -80,33 +80,33 @@ export class App extends Component {
     return (
 
 
+      this.state.error ? <Error /> :
+        this.state.show ?
 
-      this.state.show ?
+          <div className="row">
+            <div className="col-xs-6">
+              <Info
+                name={this.state.data.display_name}
+                lat={this.state.data.lat}
+                lon={this.state.data.lon}
+              />
 
-        <div className="row">
-          <div className="col-xs-6">
-            <Info
-              name={this.state.data.display_name}
-              lat={this.state.data.lat}
-              lon={this.state.data.lon}
-            />
+              <br />
 
-            <br />
+              <Map
+                lat={this.state.data.lat}
+                lon={this.state.data.lon}
+              />
+            </div>
 
-            <Map
-              lat={this.state.data.lat}
-              lon={this.state.data.lon}
-            />
+
+            <div className="col-xs-6">
+              <WeatherA weatherInfo={this.state.weatherData} />
+            </div>
+
+
           </div>
-
-
-          <div className="col-xs-6">
-            <WeatherA weatherInfo={this.state.weatherData} />
-          </div>
-
-
-        </div>
-        : ''
+          : ''
 
     );
 
