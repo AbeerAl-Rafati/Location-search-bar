@@ -98,9 +98,9 @@ export class App extends Component {
                 lon={this.state.data.lon}
               />
             </div>
+            <br />
 
-
-            <div className="col-xs-6">
+            <div className="col-xs-8" style={{ fontSize: '1rem' }}>
               <WeatherA weatherInfo={this.state.weatherData} />
             </div>
 
