@@ -100,7 +100,7 @@ export class App extends Component {
             </div>
             <br />
 
-            <div className="col-xs-8" style={{ fontSize: '1rem' }}>
+            <div className="col-xs-8" style={{ width: '120rem', margin: '2rem 0rem 1rem 3.25rem', fontSize: '1rem' }}>
               <WeatherA weatherInfo={this.state.weatherData} />
             </div>
 
