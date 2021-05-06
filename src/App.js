@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './header';
 import Footer from './footer';
-import Error from './error';
+// import Error from './error';
 import Map from './map';
 import FormA from './Form';
 import Info from './Info';
@@ -26,18 +26,20 @@ export class App extends Component {
   getLocation = async (event) => {
     try {
       event.preventDefault();
-      const url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATOIN_IQ_KEY}&q=${this.state.search}&format=json`;
+      // const url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATOIN_IQ_KEY}&q=${this.state.search}&format=json`;
 
-      const request = await axios.get(url);
+      const infoUrl = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATOIN_IQ_KEY}&q=${this.state.search}&format=json`;
+
+      const request = await axios.get(infoUrl);
 
       // const error = await axios.get(`${process.env.REACT_APP_SERVER}/error`);
 
       this.setState({
         data: request.data[0],
-
+        show: true,
 
       });
-
+      this.getWheather();
     }
     catch (error) {
       this.setState({
@@ -46,12 +48,12 @@ export class App extends Component {
       });
       // alert('ERROR !! Add an acceptable value !!')
       // <Error />
+
     }
-    this.getWheather();
+
   };
 
-  // const expressWeatherUrl = `${process.env.REACT_APP_SERVER}/weather?lat=${this.state.data.lat}&lon=${this.state.data.lon}`;
-  // const expressReq = await axios.get(expressWeatherUrl);
+
 
 
   getWheather = async () => {
@@ -61,7 +63,7 @@ export class App extends Component {
 
     this.setState({
       weatherData: weatherReq.data,
-      show: true,
+
     });
 
   }
@@ -76,10 +78,11 @@ export class App extends Component {
   resultShow = () => {
 
     return (
-      <>
-        this.state.error && <Error />
 
-      this.state.show &&
+
+
+      this.state.show ?
+
         <div className="row">
           <div className="col-xs-6">
             <Info
@@ -103,9 +106,10 @@ export class App extends Component {
 
 
         </div>
+        : ''
 
-      </>
     );
+
 
 
   }
@@ -135,4 +139,3 @@ export class App extends Component {
 }
 
 export default App;
-
