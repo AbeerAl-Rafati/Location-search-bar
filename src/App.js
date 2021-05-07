@@ -8,7 +8,8 @@ import FormA from './Form';
 import Info from './Info';
 import WeatherA from './WeatherA';
 import Movies from './Movies';
-
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 
 export class App extends Component {
@@ -21,6 +22,7 @@ export class App extends Component {
       error: false,
       weatherData: [],
       moviesData: [],
+      cityName: ''
     };
   }
 
@@ -72,7 +74,7 @@ export class App extends Component {
 
 
   getMovies = async () => {
-    const moviesUrl = `${process.env.REACT_APP_SERVER}/movies?city=${this.state.data.display_name}`;
+    const moviesUrl = `${process.env.REACT_APP_SERVER}/movies?query=${this.state.search}`;
     const moviesReq = await axios.get(moviesUrl);
     console.log(moviesReq.data);
 
@@ -86,6 +88,8 @@ export class App extends Component {
   updateSearch = (event) => {
 
     this.setState({ search: event.target.value });
+
+
   }
 
 
@@ -98,7 +102,7 @@ export class App extends Component {
         this.state.show ?
 
           <div >
-            <div >
+            <div style={{ margin: '2rem 25%', color: '#3f3697' }} >
               <Info
                 name={this.state.data.display_name}
                 lat={this.state.data.lat}
@@ -113,15 +117,18 @@ export class App extends Component {
               />
             </div>
             <br />
-            <div className="row">
-              <div className="col-xs-6" style={{ width: '120rem', margin: '2rem 0rem 1rem 3.25rem', fontSize: '1rem' }}>
-                <WeatherA weatherInfo={this.state.weatherData} />
-              </div>
-              <div className="col-xs-6">
-                <Movies weatherData={this.state.weatherData} />
-              </div>
-            </div>
 
+            <Container fluid>
+              <Row className='justify-content-md-center'>
+
+
+                <WeatherA weatherInfo={this.state.weatherData} />
+              </Row >
+              <Row className='justify-content-md-center'>
+                <Movies moviesData={this.state.moviesData} />
+
+              </Row >
+            </Container>
           </div>
           : ''
 
@@ -145,10 +152,10 @@ export class App extends Component {
           />
 
           <br />
-
-          <div>{this.resultShow()}</div>
-
         </div>
+        <div style={{ margin: '2rem 10%', color: '#3f3697' }}>{this.resultShow()}</div>
+
+
         <Footer />
       </>);
   }
