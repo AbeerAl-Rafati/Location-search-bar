@@ -14,8 +14,8 @@ export class Movies extends Component {
               </Card.Text>
 
               <Card.Text>Release Date: {movie.release_date}</Card.Text>
-              <Card.Text>Popularity: {movie.popularity}</Card.Text>
-              <Card.Text>Rank: {movie.vote_count}</Card.Text>
+              <Card.Text>Rank: {movie.popularity}</Card.Text>
+              <Card.Text>Vote: {movie.vote_count}</Card.Text>
             </Card.Body>
           </Card>);
 
