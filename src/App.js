@@ -7,6 +7,7 @@ import Map from './map';
 import FormA from './Form';
 import Info from './Info';
 import WeatherA from './WeatherA';
+import Movies from './Movies';
 
 
 
@@ -19,7 +20,7 @@ export class App extends Component {
       show: false,
       error: false,
       weatherData: [],
-      // err: ''
+      moviesData: [],
     };
   }
 
@@ -40,6 +41,7 @@ export class App extends Component {
 
       });
       this.getWheather();
+      this.getMovies();
     }
     catch (error) {
       this.setState({
@@ -69,6 +71,18 @@ export class App extends Component {
   }
 
 
+  getMovies = async () => {
+    const moviesUrl = `${process.env.REACT_APP_SERVER}/movies?city=${this.state.data.display_name}`;
+    const moviesReq = await axios.get(moviesUrl);
+    console.log(moviesReq.data);
+
+    this.setState({
+      moviesData: moviesReq.data,
+
+    });
+
+  }
+
   updateSearch = (event) => {
 
     this.setState({ search: event.target.value });
@@ -83,8 +97,8 @@ export class App extends Component {
       this.state.error ? <Error /> :
         this.state.show ?
 
-          <div className="row">
-            <div className="col-xs-6">
+          <div >
+            <div >
               <Info
                 name={this.state.data.display_name}
                 lat={this.state.data.lat}
@@ -99,11 +113,14 @@ export class App extends Component {
               />
             </div>
             <br />
-
-            <div className="col-xs-8" style={{ width: '120rem', margin: '2rem 0rem 1rem 3.25rem', fontSize: '1rem' }}>
-              <WeatherA weatherInfo={this.state.weatherData} />
+            <div className="row">
+              <div className="col-xs-6" style={{ width: '120rem', margin: '2rem 0rem 1rem 3.25rem', fontSize: '1rem' }}>
+                <WeatherA weatherInfo={this.state.weatherData} />
+              </div>
+              <div className="col-xs-6">
+                <Movies weatherData={this.state.weatherData} />
+              </div>
             </div>
-
 
           </div>
           : ''
