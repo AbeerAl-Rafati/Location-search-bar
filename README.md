@@ -69,24 +69,6 @@ Finish time: 4-5-2021 8:20 am
 Actual time needed to complete: mmm i think that is fair  
 
 ----------------------------
-Name of feature: create a server
-Estimate of time needed to complete: ##
-
-Start time: 3-5-2021 3:30 am
-
-Finish time: 3-5-2021 4:20 am
-
-Actual time needed to complete: i think this time is engouht  
-
-----------------------------
-Name of feature: send the data from the server to the frontend App
-Estimate of time needed to complete: ##
-
-Start time: 4-5-2021 9:30 pm
-
-Finish time: 4-5-2021 10:30 pm
-
-Actual time needed to complete: i think this time is engouht  
 
 
 # Getting Started with Create React App
