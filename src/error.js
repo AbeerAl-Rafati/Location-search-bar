@@ -1,23 +1,22 @@
 import React from 'react';
 
 class Error extends React.Component {
-  // timedRefresh = (timeoutPeriod) => {
-  //   setTimeout('location.reload(true);', timeoutPeriod);
-  // }
 
-  // Refresh = () => { window.onload = timedRefresh(5000) };
 
   render() {
     return (
-      <>
+      <div style={{ margin: '2rem 25%', color: 'red' }}>
         <h1>
           ERROR
         </h1>
         <br />
         <p>Add a correct city name</p>
 
-      </>
-      // ,Refresh()
+        <button className="btn btn-warning" onClick={() => window.location.reload(false)}>TRY AGAIN</button>
+
+
+      </div>
+
     );
 
 
